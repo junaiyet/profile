@@ -30,7 +30,7 @@ if (empty($password)) {
             $delete_from = '../uplodeds/users/' . $after_assos['profile_photo'];
             unlink($delete_from);
 
-         
+
             $file_name = $id . '.' . $extension;
             $new_location = '../uplodeds/users/' . $file_name;
             move_uploaded_file($uploded_file['tmp_name'], $new_location);
@@ -57,7 +57,7 @@ if (empty($password)) {
       $ubdate_user = "UPDATE users SET name='$name', email='$email'  WHERE id=$id ";
       $ubdate_user_result = mysqli_query($db_connection, $ubdate_user);
 
-      $_SESSION['update'] = 'User Updated! ';
+      $_SESSION['success'] = 'User Updated! ';
       header('location:view.php');
    }
 } else {
@@ -77,14 +77,14 @@ if (empty($password)) {
             $select_img_result = mysqli_query($db_connection, $select_img);
             $after_assos = mysqli_fetch_assoc($select_img_result);
 
-            $delete_from = 'uplodeds/users/' . $after_assos['profile_photo'];
+            $delete_from = '../uplodeds/users/' . $after_assos['profile_photo'];
             unlink($delete_from);
 
             $ubdate_user = "UPDATE users SET name='$name', email='$email', password='$password_hash' WHERE id=$id ";
             $ubdate_user_result = mysqli_query($db_connection, $ubdate_user);
 
             $file_name = $id . '.' . $extension;
-            $new_location = 'uplodeds/users/' . $file_name;
+            $new_location = '../uplodeds/users/' . $file_name;
             move_uploaded_file($uploded_file['tmp_name'], $new_location);
 
             // 
@@ -106,13 +106,14 @@ if (empty($password)) {
 
 
    } else {
-      $update_users = "UPDATE users SET profile_photo = '$file_name' WHERE id=$id";
-      $update_users_result = mysqli_query($db_connection, $update_users);
-      $_SESSION['update'] = 'User Updated! ';
+      $ubdate_user = "UPDATE users SET name='$name', email='$email', password='$password_hash' WHERE id=$id ";
+      $ubdate_user_result = mysqli_query($db_connection, $ubdate_user);
+
+      $_SESSION['success'] = 'User Updated! ';
       header('location:view.php');
    }
 
 
-   $_SESSION['update'] = 'User Updated! ';
+   $_SESSION['success'] = 'User Updated! ';
    header('location:view.php');
 }

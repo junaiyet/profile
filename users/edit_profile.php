@@ -40,7 +40,7 @@ require '../dashbord_parts/header.php';
                          <div class="mt-5">
                              <label for="">Change Profile Photo</label>
                              <input type="file" class="form-control" name="profile_photo" oninput="pic.src=window.URL.createObjectURL(this.files[0])">
-                            <img width="50" style="border-radius: 50%;" class="my-4" id="pic" src="/form-validation/uplodeds/users/<?=$after_assos_info['profile_photo']; ?>">
+                            <img width="50" style="border-radius: 50%;" class="my-4" id="pic" src="/protfolio/uplodeds/users/<?=$after_assos_info['profile_photo']; ?>">
                 
                             </div>
                          <div class="mt-3">
@@ -59,3 +59,16 @@ require '../dashbord_parts/header.php';
 
 
 <?php require '../dashbord_parts/footer.php' ?>
+
+    <?php if (isset($_SESSION['success'])) { ?>
+  <script>
+    Swal.fire({
+      position: 'top-center',
+      icon: 'success',
+      title: '<?= $_SESSION['success'] ?>',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  </script>
+<?php }
+unset($_SESSION['success']) ?>

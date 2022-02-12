@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2022 at 09:59 PM
+-- Generation Time: Feb 12, 2022 at 09:14 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `form_validation`
+-- Database: `protfolio`
 --
 
 -- --------------------------------------------------------
@@ -32,19 +32,21 @@ CREATE TABLE `users` (
   `name` varchar(80) NOT NULL,
   `email` varchar(80) NOT NULL,
   `password` varchar(80) NOT NULL,
-  `profile_photo` varchar(50) NOT NULL,
+  `profile_photo` varchar(80) NOT NULL,
   `created_at` datetime NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 0
+  `status` int(11) NOT NULL DEFAULT 0,
+  `role` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `profile_photo`, `created_at`, `status`) VALUES
-(2, 'Olga Tate', 'cykehokyvy@mailinator.com', '$2y$10$HGTKGEHytQ6Tdd6pvizqxuMqJBkm37sxXvBpim4Sej5RovKVkD.De', '2.png', '2022-02-07 02:54:32', 0),
-(9, 'JUNAIYET MIA', 'junaiyet@gmail.com', '$2y$10$5d1xG6OvnElffp5wdR5qSO8peAhop0YBydaoxbJ1yvqZ0aWqO7R3S', '9.png', '2022-02-08 02:39:15', 0),
-(10, 'fauleeeeeeeeeee', 'zeqoqabipi@mailinator.com', '$2y$10$QfpOBu1yH3obBQqiaFep7.0bUyMiRDdZmG7UDg13JikrpQe1OGyZu', '10.jpg', '2022-02-08 08:28:31', 1);
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `profile_photo`, `created_at`, `status`, `role`) VALUES
+(1, 'Margaret Owens', 'qylan@mailinator.com', '$2y$10$265NXIDBiLyssP6CyDmyheMBlwzEg/ceeEgRwY4DYKdiwQtT7FXtK', '1.jpg', '2022-02-12 10:02:49', 0, 4),
+(2, 'JUNAIYET', 'junaiyet@gmail.com', '$2y$10$1R3RTOfu2kaSOnk7fknjN.PiL3tqien5aV2.C26DIQ2smuEMw8JZ.', '2.jpg', '2022-02-12 10:03:58', 0, 1),
+(3, 'Lisandra Gardner', 'rinim@mailinator.com', '$2y$10$SI/nv27APOmTjwhzscm52uBhXZ0oogScq3SOYaoTmNoZy9ttF9.wS', '3.jpg', '2022-02-13 12:59:48', 0, 2),
+(4, 'Zelenia Ochoa', 'lohi@mailinator.com', '$2y$10$M.MXQ.qaC1jEb.dZsqPsmuFeQe2WTIl4zLyXZuhnmOrOuqZkCVTq2', '4.jpg', '2022-02-13 01:00:21', 0, 3);
 
 --
 -- Indexes for dumped tables
@@ -64,7 +66,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

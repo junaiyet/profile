@@ -1,11 +1,13 @@
 <?php
 session_start();
+
 require '../db.php';
 require '../session_check.php';
 
 
 $select_user = "SELECT * FROM users WHERE status=0 ";
 $select_user_result = mysqli_query($db_connection, $select_user);
+
 $select_user_trused = "SELECT * FROM users WHERE status=1 ";
 $select_user_trused_result = mysqli_query($db_connection, $select_user_trused);
 
@@ -23,7 +25,7 @@ $select_user_trused_result = mysqli_query($db_connection, $select_user_trused);
     </nav>
 
     <div class="sl-pagebody">
-
+    <?php if($after_assos_info['role'] != 4){?>
         <div class="row">
 
             <div class="col-lg-8 mx-auto mt-5 p-4">
@@ -36,7 +38,9 @@ $select_user_trused_result = mysqli_query($db_connection, $select_user_trused);
                     <td>name</td>
                     <td>email</td>
                     <td>photo</td>
+                    <?php if($after_assos_info['role'] == 1 || $after_assos_info['role'] == 2){?>
                     <td>action</td>
+                    <?php }?>
                 </tr>
             </thead>
 
@@ -50,15 +54,21 @@ $select_user_trused_result = mysqli_query($db_connection, $select_user_trused);
                                     <img width="50" style="border-radius: 50%;" src="../uplodeds/users/<?= $users['profile_photo'] ?>" alt="">
                                 </td>
 
+                                <?php if($after_assos_info['role'] == 1 || $after_assos_info['role'] == 2){?>
                                 <td>
                                     <a href="edit.php?id=<?= $users['id'] ?>" type="button" class="btn btn-info "> Edit</a>
-                                    <button name="status.php?id=<?= $users['id'] ?>" class="btn btn-danger status">Delete</button>
-                                </td>
+                                 
+                                    <?php }?>
+                                    <?php if($after_assos_info['role'] == 1){?>
+                                        <button name="status.php?id=<?= $users['id'] ?>" class="btn btn-danger status">Delete</button>
+                                    </td>
+                                    <?php }?>
                             </tr>
                         <?php } ?>
-                        <?php if (mysqli_num_rows($select_user_trused_result) == 0) { ?>
+                        <?php if (mysqli_num_rows($select_user_result) == 0) { ?>
                             <tr>
-                                <td colspan="4" class="text-center"> No Trash Found </td>
+                                <td colspan="4" class="text-center"> No user found
+                                     </td>
                             </tr>
                         <?php } ?>
                  </tbody>
@@ -116,7 +126,11 @@ $select_user_trused_result = mysqli_query($db_connection, $select_user_trused);
                 </div>
             </div>
         </div>
-
+<?php } else{?>
+  <div class="alert alert-warning p-3">
+        <h3>gorib</h3>
+  </div>
+<?php }?>
 
 
     </div><!-- sl-pagebody -->
@@ -189,3 +203,16 @@ $select_user_trused_result = mysqli_query($db_connection, $select_user_trused);
 
 <?php }
 unset($_SESSION['login_msg']) ?>
+
+<?php if (isset($_SESSION['success'])) { ?>
+  <script>
+    Swal.fire({
+      position: 'top-center',
+      icon: 'success',
+      title: '<?= $_SESSION['success'] ?>',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  </script>
+<?php }
+unset($_SESSION['success']) ?>

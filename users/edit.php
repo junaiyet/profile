@@ -81,7 +81,7 @@ $after_assos = mysqli_fetch_assoc($select_user_edit_result);
                 <div class="mb-3">
 
                   <input type="file" class="form-control" name="profile_photo" oninput="pic.src=window.URL.createObjectURL(this.files[0])">
-                  <img width="50" style="border-radius: 50%;" class="my-4" id="pic" src="../uplodeds/users/<?= $after_assos['profile_photo']; ?>">
+                  <img width="50" style="border-radius: 50%;" class="my-4" id="pic" src="/protfolio/uplodeds//users/<?= $after_assos['profile_photo']; ?>">
                   <!-- <img width="50" style="border-radius: 50%;" class="mt-3"  > -->
                   <?php if (isset($_SESSION['extension'])) { ?>
                     <div class="alert alert-danger">

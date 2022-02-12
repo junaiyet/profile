@@ -40,13 +40,13 @@ $after_assos_info = mysqli_fetch_assoc($select_profile_result);
     <title>junaiyet</title>
 
     <!-- vendor css -->
-    <link href="/form-validation/dashbord_assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="/form-validation/dashbord_assets/lib/Ionicons/css/ionicons.css" rel="stylesheet">
-    <link href="/form-validation/dashbord_assets/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <link href="/protfolio/dashbord_assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/protfolio/dashbord_assets/lib/Ionicons/css/ionicons.css" rel="stylesheet">
+    <link href="/protfolio/dashbord_assets/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
 
 
     <!-- Starlight CSS -->
-    <link rel="stylesheet" href="/form-validation/dashbord_assets/css/starlight.css">
+    <link rel="stylesheet" href="/protfolio/dashbord_assets/css/starlight.css">
 </head>
 
 <body>
@@ -63,7 +63,7 @@ $after_assos_info = mysqli_fetch_assoc($select_profile_result);
 
         <label class="sidebar-label">Navigation</label>
         <div class="sl-sideleft-menu">
-            <a href="/form-validation/dashbord.php" class="sl-menu-link">
+            <a href="/protfolio/dashbord.php" class="sl-menu-link">
                 <div class="sl-menu-item">
                     <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
                     <span class="menu-item-label" >Dashboard</span>
@@ -77,7 +77,8 @@ $after_assos_info = mysqli_fetch_assoc($select_profile_result);
             </a><!-- sl-menu-link -->
 
 
-            </a><!-- sl-menu-link -->
+           <!-- sl-menu-link -->
+           <?php if($after_assos_info['role'] != 1){?>
             <a href="#" class="sl-menu-link">
                 <div class="sl-menu-item">
                     <i class="menu-item-icon icon ion-ios-paper-outline tx-22"></i>
@@ -86,10 +87,12 @@ $after_assos_info = mysqli_fetch_assoc($select_profile_result);
                 </div><!-- menu-item -->
             </a><!-- sl-menu-link -->
             <ul class="sl-menu-sub nav flex-column">
-                <li class="nav-item"><a href="/form-validation/users/view.php" class="nav-link">Users View</a></li>
-                <li class="nav-item"><a href="/form-validation/users/edit.php" class="nav-link">Users Edit</a></li>
+                <li class="nav-item"><a href="/protfolio/users/view.php" class="nav-link">Users View</a></li>
+                <li class="nav-item"><a href="/protfolio/users/edit.php" class="nav-link">Users Edit</a></li>
 
             </ul>
+            <?php }?>
+
         </div><!-- sl-sideleft-menu -->
 
         <br>
@@ -107,7 +110,7 @@ $after_assos_info = mysqli_fetch_assoc($select_profile_result);
                 <div class="dropdown">
                     <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
                         <span class="logged-name"><?= $after_assos_info['name'] ;?></span></span>
-                        <img src="/form-validation/uplodeds/users/<?= $after_assos_info['profile_photo']?>" class="wd-32 rounded-circle" alt="">
+                        <img src="/protfolio/uplodeds/users/<?= $after_assos_info['profile_photo']?>" class="wd-32 rounded-circle" alt="">
                     </a>
                     <div class="dropdown-menu dropdown-menu-header wd-200">
                         <ul class="list-unstyled user-profile-nav">

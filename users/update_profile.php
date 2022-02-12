@@ -62,7 +62,10 @@ if (empty($password)){
         $_SESSION['update'] = 'User Updated! ';
         header('location:view.php');
     }
-} else {
+
+} 
+
+else {
     if ($_FILES['profile_photo']['name'] != ''){
 
         // 
@@ -93,7 +96,7 @@ if (empty($password)){
                 $update_users = "UPDATE users SET profile_photo = '$file_name' WHERE id=$id";
                 $update_users_result = mysqli_query($db_connection, $update_users);
                 $_SESSION['success'] = 'Registration Successful';
-
+           
                 header('location:edit_profile.php');
                 // 
             } else {
